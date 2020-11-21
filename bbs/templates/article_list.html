@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>게시글 목록</title> {% endblock title %}
+
+{% block css %}
+
+<style type="text/css">
+    tbody > tr {cursor: pointer;}
+</style>
+{% endblock css %}
+
+{% block content %}
+<table class="table table-hober table-responsive">
+    <thead>
+        <th>게시글 번호</th><th>제목</th><th>작성자</th><th>작성일</th>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr onclick="location.href='{% url 'article_detail' article.pk %}'">
+            <td>{{ article.pk }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.author }}</td>
+            <td>{{ article.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+   <a href="{% url 'article_craete' %}" class="btn btn-primary" type="button">새 게시글 작성</a>
+{% endblock content %}

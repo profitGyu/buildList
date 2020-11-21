@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% block title %} <!-- 페이지별 타이틀 공간 -->
+        {% endblock title %}
+
+        {% block meta %}
+        {% endblock meta %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        {% block scripts %}
+        {% endblock scripts %}
+
+        {% block css %}
+        {% endblock css %}
+</head>
+<body>
+{% block header %}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'article' %}">게시글 목록</a>
+        </div>
+    </div>
+</nav>
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible " role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock header %}
+{% block content %}
+{% endblock content %}
+</body>
+</html>
